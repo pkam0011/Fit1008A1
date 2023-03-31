@@ -1,6 +1,12 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from layer_util import Layer
+from data_structures.referential_array import ArrayR
+from data_structures.stack_adt import ArrayStack
+from data_structures.array_sorted_list import ArraySortedList
+from data_structures.queue_adt import CircularQueue
+
+#rearrange docstrings so each line of docstrings corresonds to each anstract method
 
 class LayerStore(ABC):
 
@@ -45,6 +51,39 @@ class SetLayerStore(LayerStore):
     - special: Invert the colour output.
     """
 
+    def __init__(self) -> None:
+        pass
+
+    # @abstractmethod
+    def add(self, layer: Layer) -> bool:
+        """
+        Add a layer to the store.
+        Returns true if the LayerStore was actually changed.
+        """
+        pass
+
+    #@abstractmethod
+    def get_color(self, start, timestamp, x, y) -> tuple[int, int, int]:
+        """
+        Returns the colour this square should show, given the current layers.
+        """
+        pass
+
+    #@abstractmethod
+    def erase(self, layer: Layer) -> bool:
+        """
+        Complete the erase action with this layer
+        Returns true if the LayerStore was actually changed.
+        """
+        pass
+
+    #@abstractmethod
+    def special(self):
+        """
+        Special mode. Different for each store implementation.
+        """
+        pass
+
     pass
 
 class AdditiveLayerStore(LayerStore):
@@ -54,6 +93,39 @@ class AdditiveLayerStore(LayerStore):
     - erase: Remove the first layer that was added. Ignore what is currently selected.
     - special: Reverse the order of current layers (first becomes last, etc.)
     """
+
+    def __init__(self) -> None:
+        pass
+
+    #@abstractmethod
+    def add(self, layer: Layer) -> bool:
+        """
+        Add a layer to the store.
+        Returns true if the LayerStore was actually changed.
+        """
+        pass
+
+    #@abstractmethod
+    def get_color(self, start, timestamp, x, y) -> tuple[int, int, int]:
+        """
+        Returns the colour this square should show, given the current layers.
+        """
+        pass
+
+    #@abstractmethod
+    def erase(self, layer: Layer) -> bool:
+        """
+        Complete the erase action with this layer
+        Returns true if the LayerStore was actually changed.
+        """
+        pass
+
+    #@abstractmethod
+    def special(self):
+        """
+        Special mode. Different for each store implementation.
+        """
+        pass
 
     pass
 
@@ -67,4 +139,38 @@ class SequenceLayerStore(LayerStore):
         In the event of two layers being the median names, pick the lexicographically smaller one.
     """
 
+    def __init__(self) -> None:
+        pass
+
+    #@abstractmethod
+    def add(self, layer: Layer) -> bool:
+        """
+        Add a layer to the store.
+        Returns true if the LayerStore was actually changed.
+        """
+        pass
+
+    #@abstractmethod
+    def get_color(self, start, timestamp, x, y) -> tuple[int, int, int]:
+        """
+        Returns the colour this square should show, given the current layers.
+        """
+        pass
+
+    #@abstractmethod
+    def erase(self, layer: Layer) -> bool:
+        """
+        Complete the erase action with this layer
+        Returns true if the LayerStore was actually changed.
+        """
+        pass
+
+    #@abstractmethod
+    def special(self):
+        """
+        Special mode. Different for each store implementation.
+        """
+        pass
+
     pass
+
